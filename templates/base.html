@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Кав'ярня</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        nav a { margin-right: 15px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+        th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+        .flash { background: #fff3cd; padding: 8px 12px; margin: 10px 0; border-radius: 4px; }
+        input, textarea, select { margin: 4px 0; padding: 5px; }
+        label { display: block; margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Головна</a>
+        <a href="{{ url_for('shop.shop') }}">Магазин</a>
+        <a href="{{ url_for('shop.cart') }}">Кошик</a>
+        <a href="{{ url_for('feedback.feedback') }}">Відгуки</a>
+        <a href="{{ url_for('admin.index') }}">Адмін-панель</a>
+    </nav>
+    <hr>
+
+    {% for m in get_flashed_messages() %}
+        <div class="flash">{{ m }}</div>
+    {% endfor %}
+
+    {% block content %}
+        <h1>Ласкаво просимо до кав'ярні!</h1>
+        <p>Оберіть розділ у меню вгорі.</p>
+    {% endblock %}
+</body>
+</html>

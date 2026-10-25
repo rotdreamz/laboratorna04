@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ 'Редагувати товар' if product else 'Новий товар' }}</h1>
+<form method="post">
+    <label>Назва
+        <input type="text" name="name" value="{{ product['name'] if product else '' }}" required>
+    </label>
+    <label>Опис
+        <textarea name="description" rows="3" cols="40">{{ product['description'] if product else '' }}</textarea>
+    </label>
+    <label>Ціна
+        <input type="number" step="0.01" min="0" name="price" value="{{ product['price'] if product else '' }}" required>
+    </label>
+    <label>Залишок
+        <input type="number" min="0" name="stock" value="{{ product['stock'] if product else 0 }}" required>
+    </label>
+    <button type="submit">Зберегти</button>
+    <a href="{{ url_for('admin.products') }}">Скасувати</a>
+</form>
+{% endblock %}

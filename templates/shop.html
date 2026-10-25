@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Магазин</h1>
+{% if products %}
+<table>
+    <tr><th>Назва</th><th>Опис</th><th>Ціна</th><th>Залишок</th><th></th></tr>
+    {% for p in products %}
+    <tr>
+        <td>{{ p['name'] }}</td>
+        <td>{{ p['description'] }}</td>
+        <td>{{ p['price'] }} грн</td>
+        <td>{{ p['stock'] }}</td>
+        <td>
+            <form method="post" action="{{ url_for('shop.add_to_cart', product_id=p['id']) }}">
+                <button type="submit">У кошик</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Товарів поки немає. Додайте їх в адмін-панелі.</p>
+{% endif %}
+{% endblock %}
