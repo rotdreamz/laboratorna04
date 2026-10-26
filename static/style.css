@@ -1,0 +1,155 @@
+/* ===== Кольори сайту (змінні, щоб легко змінювати тему) ===== */
+:root {
+    --bg: #f6f1ea;          /* фон сторінки */
+    --card: #ffffff;        /* фон блоку з вмістом */
+    --brown: #4b2e1e;       /* основний темно-коричневий */
+    --accent: #c47a3d;      /* акцент (кнопки, посилання) */
+    --accent-dark: #a2602a;
+    --border: #e3d8cb;
+    --danger: #b3382c;
+    --text: #2b2118;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+/------ шакпка і навігація ------/
+header.site-header {
+    background: var(--brown);
+    padding: 14px 20px;
+}
+
+header.site-header nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.brand {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: auto;
+    text-decoration: none;
+}
+
+header.site-header nav a:not(.brand) {
+    color: #f3e6d8;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+header.site-header nav a:not(.brand):hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/------ основний блок------/
+main {
+    max-width: 1000px;
+    margin: 24px auto;
+    padding: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+h1 { margin-top: 0; color: var(--brown); }
+h2 { color: var(--brown); }
+
+a { color: var(--accent-dark); }
+
+/------ флеш повідомлення ------/
+.flash {
+    background: #fff3cd;
+    border-left: 4px solid var(--accent);
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+}
+
+/------ таблиці ------/
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 12px;
+}
+
+th {
+    background: var(--brown);
+    color: #fff;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+tr:nth-child(even) td { background: #faf6f1; }
+tr:hover td { background: #f3e9dc; }
+
+/------ форми ------/
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+input, textarea, select {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin-top: 4px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font: inherit;
+    background: #fff;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid var(--accent);
+    border-color: var(--accent);
+}
+
+/* select у таблиці замовлень не має бути на всю ширину */
+td select { display: inline-block; width: auto; }
+
+/* ===== Кнопки ===== */
+button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 12px;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+}
+
+button:hover { background: var(--accent-dark); }
+
+/* у таблицях кнопки без верхнього відступу */
+td button { margin-top: 0; padding: 5px 12px; }
+
+/* кнопки видалення автоматично червоні (за адресою форми) */
+form[action*="delete"] button { background: var(--danger); }
+form[action*="delete"] button:hover { background: #8f2c22; }
+
+/* ===== Малі екрани ===== */
+@media (max-width: 700px) {
+    main { margin: 12px; padding: 14px; }
+    table { display: block; overflow-x: auto; }
+}
