@@ -1,13 +1,14 @@
-/* ===== Кольори сайту (змінні, щоб легко змінювати тему) ===== */
+/* ===== Кольори сайту (змінюй тут, щоб перефарбувати весь сайт) ===== */
 :root {
-    --bg: #f6f1ea;          /* фон сторінки */
+    --bg: #fffdf0;          /* фон сторінки */
     --card: #ffffff;        /* фон блоку з вмістом */
-    --brown: #4b2e1e;       /* основний темно-коричневий */
-    --accent: #c47a3d;      /* акцент (кнопки, посилання) */
-    --accent-dark: #a2602a;
-    --border: #e3d8cb;
+    --green: #2f6b2a;       /* шапка, заголовки таблиць */
+    --accent: #3f9a36;      /* кнопки */
+    --accent-dark: #2f7a29; /* кнопки при наведенні, посилання */
+    --lemon: #ffe14d;       /* лимонно-жовтий акцент */
+    --border: #eee6b8;
     --danger: #b3382c;
-    --text: #2b2118;
+    --text: #22301f;
 }
 
 * { box-sizing: border-box; }
@@ -20,9 +21,10 @@ body {
     line-height: 1.5;
 }
 
-/------ шакпка і навігація ------/
+/* ===== Шапка та навігація ===== */
 header.site-header {
-    background: var(--brown);
+    background: var(--green);
+    border-bottom: 4px solid var(--lemon);
     padding: 14px 20px;
 }
 
@@ -36,25 +38,26 @@ header.site-header nav {
 }
 
 .brand {
-    color: #fff;
+    color: var(--lemon);
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-right: auto;
     text-decoration: none;
 }
 
 header.site-header nav a:not(.brand) {
-    color: #f3e6d8;
+    color: #fff5b8;
     text-decoration: none;
     padding: 6px 12px;
     border-radius: 6px;
 }
 
 header.site-header nav a:not(.brand):hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
 }
 
-/------ основний блок------/
+/* ===== Основний блок ===== */
 main {
     max-width: 1000px;
     margin: 24px auto;
@@ -64,21 +67,21 @@ main {
     border-radius: 12px;
 }
 
-h1 { margin-top: 0; color: var(--brown); }
-h2 { color: var(--brown); }
+h1 { margin-top: 0; color: var(--green); }
+h2 { color: var(--green); }
 
 a { color: var(--accent-dark); }
 
-/------ флеш повідомлення ------/
+/* ===== Повідомлення (flash) ===== */
 .flash {
-    background: #fff3cd;
-    border-left: 4px solid var(--accent);
+    background: #fff9c4;
+    border-left: 4px solid var(--lemon);
     padding: 10px 14px;
     margin-bottom: 16px;
     border-radius: 6px;
 }
 
-/------ таблиці ------/
+/* ===== Таблиці ===== */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -86,7 +89,7 @@ table {
 }
 
 th {
-    background: var(--brown);
+    background: var(--green);
     color: #fff;
     text-align: left;
 }
@@ -97,10 +100,10 @@ th, td {
     vertical-align: top;
 }
 
-tr:nth-child(even) td { background: #faf6f1; }
-tr:hover td { background: #f3e9dc; }
+tr:nth-child(even) td { background: #fffbe0; }
+tr:hover td { background: #fff3b0; }
 
-/------ форми ------/
+/* ===== Форми ===== */
 label {
     display: block;
     margin-top: 12px;

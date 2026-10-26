@@ -9,7 +9,7 @@
 <body>
     <header class="site-header">
         <nav>
-            <a class="brand" href="{{ url_for('index') }}">☕ Кав'ярня</a>
+            <a class="brand" href="{{ url_for('index') }}">🍋 Лимон</a>
             <a href="{{ url_for('shop.shop') }}">Магазин</a>
             <a href="{{ url_for('shop.cart') }}">Кошик</a>
             <a href="{{ url_for('feedback.feedback') }}">Відгуки</a>
@@ -23,8 +23,8 @@
         {% endfor %}
 
         {% block content %}
-            <h1>Ласкаво просимо до кав'ярні!</h1>
-            <p>Оберіть розділ у меню вгорі.</p>
+            <h1>🍋 Лимон: чистота без зайвих витрат</h1>
+            <p>Побутова хімія та товари для дому за доброю ціною.</p>
         {% endblock %}
     </main>
 </body>
