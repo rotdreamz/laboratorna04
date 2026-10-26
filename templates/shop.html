@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Магазин</h1>
+<h1>Каталог</h1>
 {% if products %}
-<table>
-    <tr><th>Назва</th><th>Опис</th><th>Ціна</th><th>Залишок</th><th></th></tr>
+<div class="catalog">
     {% for p in products %}
-    <tr>
-        <td>{{ p['name'] }}</td>
-        <td>{{ p['description'] }}</td>
-        <td>{{ p['price'] }} грн</td>
-        <td>{{ p['stock'] }}</td>
-        <td>
+    <div class="item">
+        <div class="item-img">
+            {% if p['image'] %}
+                <img src="{{ url_for('static', filename='uploads/' ~ p['image']) }}" alt="{{ p['name'] }}">
+            {% else %}
+                <div class="no-image">🍋</div>
+            {% endif %}
+        </div>
+        <div class="item-name">{{ p['name'] }}</div>
+        <div class="item-desc">{{ p['description'] }}</div>
+        <div class="item-stock">В наявності: {{ p['stock'] }} шт</div>
+        <div class="item-bottom">
+            <div class="item-price">{{ '%g' % p['price'] }} ₴</div>
             <form method="post" action="{{ url_for('shop.add_to_cart', product_id=p['id']) }}">
-                <button type="submit">У кошик</button>
+                <button type="submit" class="cart-btn" title="У кошик">🛒</button>
             </form>
-        </td>
-    </tr>
+        </div>
+    </div>
     {% endfor %}
-</table>
+</div>
 {% else %}
 <p>Товарів поки немає. Додайте їх в адмін-панелі.</p>
 {% endif %}
