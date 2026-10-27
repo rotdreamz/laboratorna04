@@ -284,3 +284,25 @@ main:has(.catalog) {
     main:has(.catalog) { padding: 0 8px; }
     table { display: block; overflow-x: auto; }
 }
+
+/* ===== Акція ===== */
+.old-row { display: flex; align-items: center; gap: 6px; }
+
+.old-price {
+    color: #8a8a8a;
+    text-decoration: line-through;
+    font-size: 0.9rem;
+}
+
+.discount {
+    background: #ffd6d1;
+    color: #b3382c;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 6px;
+}
+
+.item-price.sale { color: #b3382c; }
+
+.out-of-stock { font-size: 0.85rem; color: #b3382c; font-weight: 600; }

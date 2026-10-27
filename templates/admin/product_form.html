@@ -8,12 +8,25 @@
     <label>Опис
         <textarea name="description" rows="3" cols="40">{{ product['description'] if product else '' }}</textarea>
     </label>
-    <label>Ціна
+    <label>Ціна (грн)
         <input type="number" step="0.01" min="0" name="price" value="{{ product['price'] if product else '' }}" required>
+    </label>
+    <label>Акційна ціна (грн), залиш порожнім, якщо акції немає
+        <input type="number" step="0.01" min="0" name="sale_price" value="{{ product['sale_price'] if product and product['sale_price'] is not none else '' }}">
+    </label>
+    <label>Доставка (грн), 0 = безкоштовна
+        <input type="number" step="0.01" min="0" name="delivery" value="{{ product['delivery'] if product else 0 }}">
     </label>
     <label>Залишок
         <input type="number" min="0" name="stock" value="{{ product['stock'] if product else 0 }}" required>
     </label>
+    <label>Посилання на картинку
+        <input type="url" name="image" placeholder="https://..." value="{{ product['image'] or '' if product else '' }}">
+    </label>
+    {% if product and product['image'] %}
+        <p>Поточна картинка:<br>
+        <img src="{{ product['image'] }}" class="thumb"></p>
+    {% endif %}
     <button type="submit">Зберегти</button>
     <a href="{{ url_for('admin.products') }}">Скасувати</a>
 </form>

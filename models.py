@@ -38,7 +38,11 @@ CREATE TABLE IF NOT EXISTS products (
     name TEXT NOT NULL,
     description TEXT,
     price REAL NOT NULL CHECK (price >= 0),
-    stock INTEGER NOT NULL DEFAULT 0
+    stock INTEGER NOT NULL DEFAULT 0,
+    image TEXT,
+    delivery REAL NOT NULL DEFAULT 0,
+    sale_price REAL,
+    sale_color TEXT NOT NULL DEFAULT 'red'
 );
 
 CREATE TABLE IF NOT EXISTS orders (
@@ -130,17 +134,29 @@ def get_product(product_id):
     return get_db().execute('SELECT * FROM products WHERE id = ?', (product_id,)).fetchone()
 
 
-def add_product(name, description, price, stock):
+def add_product(name, description, price, stock, image=None, delivery=0,
+                sale_price=None, sale_color='red'):
     db = get_db()
-    db.execute('INSERT INTO products (name, description, price, stock) VALUES (?, ?, ?, ?)',
-               (name, description, price, stock))
+    db.execute('INSERT INTO products (name, description, price, stock, image, '
+               'delivery, sale_price, sale_color) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+               (name, description, price, stock, image, delivery, sale_price, sale_color))
     db.commit()
 
 
-def update_product(product_id, name, description, price, stock):
+def update_product(product_id, name, description, price, stock, image=None,
+                   delivery=0, sale_price=None, sale_color='red'):
+    """Порожнє посилання на картинку = лишити стару. Порожня sale_price = прибрати акцію."""
     db = get_db()
-    db.execute('UPDATE products SET name=?, description=?, price=?, stock=? WHERE id=?',
-               (name, description, price, stock, product_id))
+    if image:
+        db.execute('UPDATE products SET name=?, description=?, price=?, stock=?, image=?, '
+                   'delivery=?, sale_price=?, sale_color=? WHERE id=?',
+                   (name, description, price, stock, image, delivery, sale_price,
+                    sale_color, product_id))
+    else:
+        db.execute('UPDATE products SET name=?, description=?, price=?, stock=?, '
+                   'delivery=?, sale_price=?, sale_color=? WHERE id=?',
+                   (name, description, price, stock, delivery, sale_price,
+                    sale_color, product_id))
     db.commit()
 
 
