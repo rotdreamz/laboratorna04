@@ -14,6 +14,12 @@
     <label>Акційна ціна (грн), залиш порожнім, якщо акції немає
         <input type="number" step="0.01" min="0" name="sale_price" value="{{ product['sale_price'] if product and product['sale_price'] is not none else '' }}">
     </label>
+    <label>Колір ціни при акції
+        <select name="sale_color">
+            <option value="red" {{ 'selected' if not product or product['sale_color'] == 'red' else '' }}>Червоний</option>
+            <option value="black" {{ 'selected' if product and product['sale_color'] == 'black' else '' }}>Чорний</option>
+        </select>
+    </label>
     <label>Доставка (грн), 0 = безкоштовна
         <input type="number" step="0.01" min="0" name="delivery" value="{{ product['delivery'] if product else 0 }}">
     </label>
