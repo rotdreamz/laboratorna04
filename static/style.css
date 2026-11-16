@@ -303,6 +303,7 @@ main:has(.catalog) {
     border-radius: 6px;
 }
 
-.item-price.sale { color: #b3382c; }
+.item-price.sale-red { color: #b3382c; }
+.item-price.sale-black { color: var(--text); }
 
 .out-of-stock { font-size: 0.85rem; color: #b3382c; font-weight: 600; }

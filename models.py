@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS order_items (
 );
 """
 
-ORDER_STATUSES = ['new', 'processing', 'shipped', 'completed', 'cancelled']
+ORDER_STATUSES = ['новий', 'в обробці', 'відправлено', 'завершено', 'скасовано']
 
 
 def init_db():

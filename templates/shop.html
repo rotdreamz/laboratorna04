@@ -24,7 +24,7 @@
                     <span class="old-price">{{ '%g' % p['price'] }} ₴</span>
                     <span class="discount">-{{ (100 - p['sale_price'] / p['price'] * 100) | round | int }}%</span>
                 </div>
-                <div class="item-price sale">{{ '%g' % p['sale_price'] }} ₴</div>
+                <div class="item-price sale-{{ p['sale_color'] }}">{{ '%g' % p['sale_price'] }} ₴</div>
             </div>
             {% else %}
             <div class="item-price">{{ '%g' % p['price'] }} ₴</div>
