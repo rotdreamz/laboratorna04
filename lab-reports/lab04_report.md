@@ -19,16 +19,27 @@
 - **рівень 2:** таблиця `clients`, її керування в адмін-панелі та інтеграція в застосунок: при оформленні замовлення клієнт шукається за email або створюється автоматично;
 - додатково: картинки товарів (за посиланням), вартість доставки, акційна ціна з вибором кольору, україномовні підписи статусів, дизайн сайту.
 
+Коміти:
+Коміти:
+- [Додано схему БД і моделі](https://github.com/rotdreamz/laboratorna04/commit/a984111): схема БД і CRUD-функції
+- [Додано маршрути відгуків](https://github.com/rotdreamz/laboratorna04/commit/183ce28): відгуки
+- [Додано магазин і кошик](https://github.com/rotdreamz/laboratorna04/commit/9b43848): каталог, кошик, оформлення замовлення
+- [Додано адмін-маршрути для товарів, замовлень і клієнтів](https://github.com/rotdreamz/laboratorna04/commit/ad02dac): адмін-панель, таблиця клієнтів (рівень 2)
+- [Додано HTML-шаблони сайту й адмін-панелі](https://github.com/rotdreamz/laboratorna04/commit/ce2ae80): шаблони
+- [Оновлено стилі: лимонна тема й картки каталогу](https://github.com/rotdreamz/laboratorna04/commit/ddc1332): дизайн сайту
+
+Уся історія комітів: https://github.com/rotdreamz/laboratorna04/commits/main
+
 
 ## 2. Схема бази даних
 
-| Таблиця | Призначення | Ключі |
-|---|---|---|
-| `feedback` | відгуки користувачів | PK `id` |
-| `clients` | клієнти | PK `id`, `email` UNIQUE |
-| `products` | товари (ціна, акційна ціна, колір акції, доставка, картинка, залишок) | PK `id` |
-| `orders` | замовлення зі статусом | PK `id`, FK `client_id` → `clients.id` |
-| `order_items` | позиції замовлення | PK `id`, FK `order_id` → `orders.id`, FK `product_id` → `products.id` |
+|    Таблиця    | Призначення                                              | Ключі |
+|---------------|----------------------------------------------------------|---------|
+| `feedback`    | відгуки користувачів                                     | PK `id` |
+| `clients`     | клієнти                                                  | PK `id`, `email` UNIQUE |
+| `products`    | товари (ціна, акційна ціна, доставка, картинка, залишок) | PK `id` |
+| `orders`      | замовлення зі статусом                                   | PK `id`, FK `client_id` → `clients.id` |
+| `order_items` | позиції замовлення                                       | PK `id`, FK `order_id` → `orders.id`, FK `product_id` → `products.id` |
 
 Зв'язки:
 - `clients` → `orders`: один-до-багатьох (`ON DELETE RESTRICT`, клієнта із замовленнями видалити не можна);
